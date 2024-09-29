@@ -1,46 +1,36 @@
 import java.util.Scanner;
 
 public class ZooManagement {
+
     private int nbrCages;
     private String zooName;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         ZooManagement zooManagement = new ZooManagement();
-
-        System.out.print("Entrez le nom du zoo : ");
-        zooManagement.zooName = scanner.nextLine();
-
-        System.out.print("Entrez le nombre de cages : ");
-        while (!scanner.hasNextInt()) {
-            System.out.println("Veuillez entrer un nombre valide pour les cages.");
-            scanner.next();
-            System.out.print("Entrez le nombre de cages : ");
-        }
-        zooManagement.nbrCages = scanner.nextInt();
-        scanner.nextLine();
+        Scanner sc = new Scanner(System.in);
 
         Animal lion = new Animal("Felidae", "Lion", 5, true);
         Animal tiger = new Animal("Felidae", "Tiger", 4, true);
         Animal giraffe = new Animal("Giraffidae", "Giraffe", 7, true);
+        AZoo myzoo= new Zoo("my zoo","Paris",3,animals ) ;
+        Zoo myZoo = new Zoo("my zoo", "Paris", 20, animals);
 
-        Animal[] animals = new Animal[25];
-        animals[0] = lion;
-        animals[1] = tiger;
-        animals[2] = giraffe;
+        System.out.println("Nom de zoo: ");
+        zooManagement.zooName = sc.nextLine();
+        System.out.println("Nombre de cages: ");
 
-        Zoo myZoo = new Zoo(animals, zooManagement.zooName, "Paris", zooManagement.nbrCages);
+        while (!sc.hasNextInt()) {
+            System.out.println("Veuillez entrer un entier");
+            sc.next();
+            System.out.println("Nombre de cages: ");
+        }
+        zooManagement.nbrCages = sc.nextInt();
+        System.out.println(zooManagement.zooName + " comporte " + zooManagement.nbrCages + " cages");
+        sc.close();
 
         myZoo.displayZoo();
 
-        System.out.println("Les animaux présents sont :");
-        for (Animal animal : myZoo.getAnimals()) {
-            if (animal != null) {
-                animal.displayAnimal();
-            }
-        }
-
-        scanner.close();
+        System.out.println(myZoo.toString());
+         System.out.println(lion.toString());
     }
 }
