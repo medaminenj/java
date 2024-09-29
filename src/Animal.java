@@ -14,6 +14,14 @@ public class Animal {
     public void displayAnimal() {
         System.out.println(name + ", " + age + " ans, Famille : " + family + ", Mammifère : " + (isMammal ? "Oui" : "Non"));
     }
-
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "family='" + family + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isMammal=" + isMammal +
+                '}';
+    }
 
 }
