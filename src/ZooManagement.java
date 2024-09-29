@@ -31,6 +31,8 @@ public class ZooManagement {
         myZoo.displayZoo();
 
         System.out.println(myZoo.toString());
-         System.out.println(lion.toString());
+        for(int i=0;i<animals.length;i++) {
+            System.out.println(animals[i].toString());
+        }
     }
 }
