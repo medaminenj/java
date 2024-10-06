@@ -1,13 +1,15 @@
+package tn.esprit.gestionzoo.entities;
+
 import java.util.Arrays;
 
 public class Zoo {
 
 
-    String name;
-    String city;
-    final int nbrCages;
+    private String name;
+    private String city;
+    private int nbrCages;
     static int nbrAnimals=0;
-    Animal[] animals;
+    private Animal[] animals;
 
     public Zoo(String name, String city, Animal[] animals) {
         this.name = name;
@@ -16,15 +18,43 @@ public class Zoo {
         this.animals = new Animal[nbrCages];
     }
 
-    boolean addAnimal(Animal animal) {
-        if(searchAnimal(animal.name) == -1 && nbrAnimals < nbrCages) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name == null ) {
+            System.out.println("Le nom du zoo ne doit pas être vide");
+        }
+        this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNbrCages() {
+        return nbrCages;
+    }
+
+    public static int getNbrAnimals() {
+        return nbrAnimals;
+    }
+
+
+    public boolean addAnimal(Animal animal) {
+        if(searchAnimal(animal.getName()) == -1 && !isZooFull()) {
         animals[nbrAnimals]=animal;
         nbrAnimals++;
         return true; }
         return false;
     }
-    boolean removeAnimal(Animal animal){
-        int index = searchAnimal(animal.name);
+    public boolean removeAnimal(Animal animal){
+        int index = searchAnimal(animal.getName());
         if(index != -1){
             for(int i=index;i<nbrAnimals-1;i++){
                animals[i]=animals[i+1];
@@ -36,7 +66,7 @@ public class Zoo {
         return false;
     }
 
-    boolean isZooFull(){
+    public boolean isZooFull(){
         if (nbrAnimals < nbrCages) {
             return false;
         }
@@ -49,7 +79,7 @@ public class Zoo {
         return z2;
     }
 
-    void displayAnimals() {
+    public void displayAnimals() {
         for (Animal animal : animals) {
             System.out.println(animal);
         }
@@ -61,9 +91,9 @@ public class Zoo {
         System.out.println("zoo nbrCages: " + nbrCages);
     }
 
-    int searchAnimal(String name){
+    public int searchAnimal(String name){
         for(int i=0;i<nbrAnimals;i++){
-            if(animals[i].name.equals(name)){
+            if(animals[i].getName().equals(name)){
                 return i;
             }
         }
@@ -72,7 +102,7 @@ public class Zoo {
 
     @Override
     public String toString() {
-        return "Zoo{" +
+        return "tn.esprit.gestionzoo.entities.Zoo{" +
                 "name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", nbrCages=" + nbrCages +
