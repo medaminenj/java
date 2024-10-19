@@ -9,13 +9,16 @@ public class Zoo {
     private String city;
     private int nbrCages;
     static int nbrAnimals=0;
+    static int nbrAquatics =0;
     private Animal[] animals;
+    protected Aquatic[] aquaticAnimals;
 
-    public Zoo(String name, String city, Animal[] animals) {
+    public Zoo(String name, String city, Animal[] animals, Aquatic[] aquaticAnimals) {
         this.name = name;
         this.city = city;
         this.nbrCages = 25;
         this.animals = new Animal[nbrCages];
+        this.aquaticAnimals = new Aquatic[10];
     }
 
     public String getName() {
@@ -53,6 +56,54 @@ public class Zoo {
         return true; }
         return false;
     }
+
+    public void addAquatic(Aquatic aquatic){
+        if(nbrAquatics < aquaticAnimals.length){
+            aquaticAnimals[nbrAquatics]=aquatic;
+            nbrAquatics++;
+            System.out.println(aquatic.getName()+"a ete ajoute avec succes");
+        }
+        else {
+            System.out.println("Le zoo est plein pour les animaux aquatiques");
+        }
+    }
+
+    public void displaySwim() {
+        for (Aquatic aquatic : aquaticAnimals) {
+            if (aquatic != null) {
+                aquatic.swim();
+            }
+        }
+    }
+
+    public float maxPenguinSwimmingDepth(){
+        float maxDepth=0;
+        for (Aquatic aquatic : aquaticAnimals) {
+            if (aquatic instanceof Penguin p) {
+                if(p.getSwimmingDepth() >= maxDepth){
+                    maxDepth=p.getSwimmingDepth();
+                }
+            }
+        }
+        return maxDepth;
+    }
+
+    public void displayNumberOfAquaticsByType(){
+        int dolphinNum=0,penguinNum=0;
+        for (Aquatic aquatic : aquaticAnimals) {
+            if (aquatic instanceof Penguin ) {
+                penguinNum++;
+            }
+            else if (aquatic instanceof Dolphin ) {
+                dolphinNum++;
+            }
+        }
+        System.out.println("le nbre de dolphin= "+dolphinNum + ", et le nbre de penguin= "+penguinNum);
+    }
+
+
+
+
     public boolean removeAnimal(Animal animal){
         int index = searchAnimal(animal.getName());
         if(index != -1){

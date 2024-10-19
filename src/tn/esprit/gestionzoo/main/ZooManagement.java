@@ -21,14 +21,32 @@ public class ZooManagement {
         Terrestrial lion = new Terrestrial("Felidae", "Lion", 5, true, 4);
         Dolphin dolphin = new Dolphin("Fish", "dolphin", 4, false, "Ocean",80);
         Penguin penguin = new Penguin("Fish", "penguin", 3, false, "Ocean",50);
+        Aquatic dolphin1 = new Aquatic("Cetacea", "Dolphin", 5, true, "Ocean");
+        Aquatic dolphin2 = new Aquatic("Cetacea", "Dolphin", 5, true, "Ocean");
 
-        shark.swim();
+        Aquatic[] aquatics=new Aquatic[10];
+
+        Zoo myZoo= new Zoo("my zoo","Paris",animals,aquatics);
+
+        myZoo.addAquatic(shark);
+        myZoo.addAquatic(dolphin);
+        myZoo.addAquatic(penguin);
+
+        myZoo.displaySwim();
+        System.out.println(myZoo.maxPenguinSwimmingDepth());
+        myZoo.displayNumberOfAquaticsByType();
+
+        if (dolphin1.equals(dolphin2)) {
+            System.out.println("The dolphins are identical.");
+        } else {
+            System.out.println("The dolphins are different.");
+        }
+
+       /* shark.swim();
         dolphin.swim();
         penguin.swim();
 
-
-
-       /* Zoo myZoo= new Zoo("my zoo","Paris",animals ) ;
+        Zoo myZoo= new Zoo("my zoo","Paris",animals ) ;
         myZoo.addAnimal(tiger);
         myZoo.addAnimal(giraffe);
         myZoo.addAnimal(lion);
