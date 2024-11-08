@@ -17,19 +17,19 @@ public class ZooManagement {
         Zoo zoo = new Zoo("My Zoo", "Paris", animals, aquatics);
 
         try {
-            // Adding the first animal
+           
             zoo.addAnimal(new Animal("Felidae", "Lion", 5, true));
             System.out.println("Number of animals: " + zoo.getNbrAnimals());
 
-            // Adding the second animal
+            
             zoo.addAnimal(new Animal("Felidae", "Tiger", 4, true));
             System.out.println("Number of animals: " + zoo.getNbrAnimals());
 
-            // Adding the third animal
+            
             zoo.addAnimal(new Animal("Elephantidae", "Elephant", 10, true));
             System.out.println("Number of animals: " + zoo.getNbrAnimals());
 
-            // Attempting to add a fourth animal to test the ZooFullException
+           
             zoo.addAnimal(new Animal("Giraffidae", "Giraffe", -7, true));
             System.out.println("Number of animals: " + zoo.getNbrAnimals());
 
