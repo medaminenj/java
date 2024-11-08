@@ -25,9 +25,9 @@ public class Animal {
     public String getName() {
         return name;
     }
-    public void setAge(int age) {
+    public void setAge(int age) throws InvalidAgeException {
         if (age < 0) {
-            System.out.println("L'âge ne peut pas être négatif");
+            throw new InvalidAgeException();
         }
         this.age = age;
     }

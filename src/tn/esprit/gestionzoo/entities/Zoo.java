@@ -16,7 +16,7 @@ public class Zoo {
     public Zoo(String name, String city, Animal[] animals, Aquatic[] aquaticAnimals) {
         this.name = name;
         this.city = city;
-        this.nbrCages = 25;
+        this.nbrCages = 3;
         this.animals = new Animal[nbrCages];
         this.aquaticAnimals = new Aquatic[10];
     }
@@ -49,13 +49,22 @@ public class Zoo {
     }
 
 
-    public boolean addAnimal(Animal animal) {
-        if(searchAnimal(animal.getName()) == -1 && !isZooFull()) {
-        animals[nbrAnimals]=animal;
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("l age de l aminal ne peut pas etre negative");
+        }
+
+
+        if (isZooFull()) {
+            throw new ZooFullException("Le zoo est plein, impossible d'ajouter un autre animal.");
+        }
+
+
+        animals[nbrAnimals] = animal;
         nbrAnimals++;
-        return true; }
-        return false;
+        System.out.println(animal.getName() + " a été ajouté avec succès.");
     }
+
 
     public void addAquatic(Aquatic aquatic){
         if(nbrAquatics < aquaticAnimals.length){

@@ -9,13 +9,45 @@ public class ZooManagement {
     private String zooName;
 
     public static void main(String[] args) {
+
+
+
+        Animal[] animals = new Animal[3];
+        Aquatic[] aquatics = new Aquatic[10];
+        Zoo zoo = new Zoo("My Zoo", "Paris", animals, aquatics);
+
+        try {
+            // Adding the first animal
+            zoo.addAnimal(new Animal("Felidae", "Lion", 5, true));
+            System.out.println("Number of animals: " + zoo.getNbrAnimals());
+
+            // Adding the second animal
+            zoo.addAnimal(new Animal("Felidae", "Tiger", 4, true));
+            System.out.println("Number of animals: " + zoo.getNbrAnimals());
+
+            // Adding the third animal
+            zoo.addAnimal(new Animal("Elephantidae", "Elephant", 10, true));
+            System.out.println("Number of animals: " + zoo.getNbrAnimals());
+
+            // Attempting to add a fourth animal to test the ZooFullException
+            zoo.addAnimal(new Animal("Giraffidae", "Giraffe", -7, true));
+            System.out.println("Number of animals: " + zoo.getNbrAnimals());
+
+
+    } catch (ZooFullException e) {
+        System.out.println("Exception: " + e.getMessage());
+    } catch (InvalidAgeException e) {
+        System.out.println("Exception: " + e.getMessage());
+    }
+
+
         ZooManagement zooManagement = new ZooManagement();
-        Scanner sc = new Scanner(System.in);
+
 
 
         /*Animal tiger = new Animal("Felidae", "Tiger", 4, true);
         Animal giraffe = new Animal("Giraffidae", "Giraffe", 7, true);*/
-        Animal[] animals=new Animal[zooManagement.nbrCages];
+
 
         Aquatic shark = new Aquatic("Fish", "Shark", 10, false, "Ocean");
         Terrestrial lion = new Terrestrial("Felidae", "Lion", 5, true, 4);
@@ -24,9 +56,9 @@ public class ZooManagement {
         Aquatic dolphin1 = new Aquatic("Cetacea", "Dolphin", 5, true, "Ocean");
         Aquatic dolphin2 = new Aquatic("Cetacea", "Dolphin", 5, true, "Ocean");
 
-        Aquatic[] aquatics=new Aquatic[10];
+        Aquatic[] aquatic=new Aquatic[10];
 
-        Zoo myZoo= new Zoo("my zoo","Paris",animals,aquatics);
+        Zoo myZoo= new Zoo("my zoo","Paris",animals,aquatic);
 
         myZoo.addAquatic(shark);
         myZoo.addAquatic(dolphin);
