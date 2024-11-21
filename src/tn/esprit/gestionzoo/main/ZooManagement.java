@@ -7,7 +7,47 @@ public class ZooManagement {
 
     public static void main(String[] args) {
 
-        Animal[] animals = new Animal[3];
+                SocieteArrayList societe = new SocieteArrayList();
+
+
+                Employe emp1 = new Employe(1, "Dupont", "Jean", "Informatique", 3);
+                Employe emp2 = new Employe(2, "Martin", "Pierre", "Ressources Humaines", 2);
+                Employe emp3 = new Employe(3, "Durand", "Sophie", "Informatique", 1);
+
+
+                societe.ajouterEmploye(emp1);
+                societe.ajouterEmploye(emp2);
+                societe.ajouterEmploye(emp3);
+
+
+                System.out.println("Liste des employés : ");
+                societe.displayEmploye();
+
+                System.out.println("\nEmployés triés par ID : ");
+                societe.trierEmployeParId();
+                societe.displayEmploye();
+
+
+
+                System.out.println("\nEmployés triés par Nom, Département et Grade : ");
+                societe.trierEmployeParNomDépartementEtGrade();
+                societe.displayEmploye();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /*     Animal[] animals = new Animal[3];
         Aquatic[] aquatics = new Aquatic[10];
         Zoo zoo = new Zoo("My Zoo", "Paris", animals, aquatics);
 
@@ -91,8 +131,6 @@ public class ZooManagement {
 
         myZoo.removeAnimal(tiger);
 
-
-/*
         myZoo.displayZoo();
 
         System.out.println(myZoo.toString());
@@ -103,9 +141,9 @@ public class ZooManagement {
             System.out.println(animals[i].toString());
         }
 
-        myZoo.displayAnimals();*/
+        myZoo.displayAnimals();
 
 
 
     }
-}
+}*/
