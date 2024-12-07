@@ -2,12 +2,64 @@ package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.*;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 
 public class ZooManagement {
 
     public static void main(String[] args) {
 
-                DepartementHashSet gestionDepartements = new DepartementHashSet();
+
+                AffectationHashMap gestionAffectation = new AffectationHashMap();
+
+                Employe emp1 = new Employe(1, "Alice", "Smith", "Informatique", 2);
+                Employe emp2 = new Employe(2, "Bob", "Johnson", "Ressources Humaines", 3);
+                Employe emp3 = new Employe(3, "Charlie", "Brown", "Marketing", 1);
+
+                Departement dep1 = new Departement(1, "Informatique", 10);
+                Departement dep2 = new Departement(2, "Ressources Humaines", 5);
+
+                gestionAffectation.ajouterEmployeDepartement(emp1, dep1);
+                gestionAffectation.ajouterEmployeDepartement(emp2, dep2);
+                gestionAffectation.ajouterEmployeDepartement(emp3, dep1);
+
+                System.out.println("Affectations initiales :");
+                gestionAffectation.afficherEmployesEtDepartements();
+
+                gestionAffectation.ajouterEmployeDepartement(emp1, dep2);
+                System.out.println("\nAprès réaffectation de Alice :");
+                gestionAffectation.afficherEmployesEtDepartements();
+
+                gestionAffectation.supprimerEmploye(emp2);
+                System.out.println("\nAprès suppression de Bob :");
+                gestionAffectation.afficherEmployesEtDepartements();
+
+                gestionAffectation.supprimerEmployeEtDepartement(emp3, dep1);
+                System.out.println("\nAprès suppression de Charlie du département Informatique :");
+                gestionAffectation.afficherEmployesEtDepartements();
+
+                gestionAffectation.afficherEmployes();
+                gestionAffectation.afficherDepartements();
+
+                System.out.println("\nRecherche de Alice : " + gestionAffectation.rechercherEmploye(emp1));
+                System.out.println("\nRecherche du département Informatique : " + gestionAffectation.rechercherDepartement(dep1));
+
+                System.out.println("\nAffectations triées par ID d'employé :");
+                TreeMap<Employe, Departement> trie = gestionAffectation.trierMap();
+                for (Map.Entry<Employe, Departement> entry : trie.entrySet()) {
+                    System.out.println(entry.getKey() + " -> " + entry.getValue());
+                }
+            }
+        }
+
+
+
+
+
+
+
+          /*      DepartementHashSet gestionDepartements = new DepartementHashSet();
 
 
                 Departement dep1 = new Departement(1, "Ressources Humaines", 10);
@@ -54,7 +106,6 @@ public class ZooManagement {
 
 
 
-        /*        SocieteArrayList societe = new SocieteArrayList();
 
 
                 Employe emp1 = new Employe(1, "Dupont", "Jean", "Informatique", 3);
