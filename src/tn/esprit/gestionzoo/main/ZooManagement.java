@@ -1,17 +1,79 @@
 package tn.esprit.gestionzoo.main;
-
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import tn.esprit.gestionzoo.entities.*;
-
-import java.util.Map;
-import java.util.TreeMap;
 
 
 public class ZooManagement {
 
     public static void main(String[] args) {
 
+                StudentManagement management = new StudentManagement();
 
-                AffectationHashMap gestionAffectation = new AffectationHashMap();
+                List<Student> students = new ArrayList<>();
+                students.add(new Student(1, "Alice", 20));
+                students.add(new Student(2, "Bob", 22));
+                students.add(new Student(3, "Charlie", 19));
+
+
+                System.out.println("All students:");
+                management.displayStudents(students, System.out::println);
+
+
+                System.out.println("\nStudents older than 20:");
+                management.displayStudentsByFilter(students, student -> student.getAge() > 20, System.out::println);
+
+
+                System.out.println("\nStudent names:");
+                String names = management.returnStudentsNames(students, Student::getName);
+                System.out.println(names);
+
+
+                Student newStudent = management.createStudent(() -> new Student(4, "David", 21));
+                students.add(newStudent);
+
+
+                System.out.println("\nStudents sorted by ID:");
+                management.sortStudentsById(students, Comparator.comparingInt(Student::getId));
+                students.forEach(System.out::println);
+
+
+                long count = management.convertToStream(students).count();
+                System.out.println("\nNumber of students: " + count);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*        AffectationHashMap gestionAffectation = new AffectationHashMap();
 
                 Employe emp1 = new Employe(1, "Alice", "Smith", "Informatique", 2);
                 Employe emp2 = new Employe(2, "Bob", "Johnson", "Ressources Humaines", 3);
