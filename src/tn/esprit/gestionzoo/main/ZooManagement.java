@@ -7,7 +7,54 @@ public class ZooManagement {
 
     public static void main(String[] args) {
 
-                SocieteArrayList societe = new SocieteArrayList();
+                DepartementHashSet gestionDepartements = new DepartementHashSet();
+
+
+                Departement dep1 = new Departement(1, "Ressources Humaines", 10);
+                Departement dep2 = new Departement(2, "Informatique", 20);
+                Departement dep3 = new Departement(3, "Marketing", 15);
+
+
+                gestionDepartements.ajouterDepartement(dep1);
+                gestionDepartements.ajouterDepartement(dep2);
+                gestionDepartements.ajouterDepartement(dep3);
+
+
+                System.out.println("Liste des départements :");
+                for (Departement dep : gestionDepartements.afficherTousLesDepartements()) {
+                    System.out.println(dep);
+                }
+
+
+                System.out.println("Recherche du département avec ID 2 :");
+                System.out.println(gestionDepartements.chercherDepartementParId(2));
+
+
+                gestionDepartements.supprimerDepartement(dep2);
+                System.out.println("Liste des départements après suppression :");
+                for (Departement dep : gestionDepartements.afficherTousLesDepartements()) {
+                    System.out.println(dep);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*        SocieteArrayList societe = new SocieteArrayList();
 
 
                 Employe emp1 = new Employe(1, "Dupont", "Jean", "Informatique", 3);
@@ -147,3 +194,4 @@ public class ZooManagement {
 
     }
 }*/
+
